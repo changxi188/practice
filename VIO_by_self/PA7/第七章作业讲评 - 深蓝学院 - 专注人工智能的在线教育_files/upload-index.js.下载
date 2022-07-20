@@ -1,0 +1,71 @@
+(function () {
+    // 上传附件
+    var parmaFileId=[];
+    if($('input[name="post[fileId]"]').length > 0 && $('input[name="post[fileId]"]').val()){
+        parmaFileId=$('input[name="post[fileId]"]').val().split("|");
+    };
+    if($('input[name="thread[fileId]"]').length > 0 && $('input[name="thread[fileId]"]').val()){
+        parmaFileId=$('input[name="thread[fileId]"]').val().split("|");
+    };
+    if ($('#uploader-container').length > 0 ) {
+        var $uploader = $('#uploader-container');
+        var uploader = new UploaderSDK({
+            id: $uploader.attr('id'),
+            initUrl: $uploader.data('initUrl'),
+            finishUrl: $uploader.data('finishUrl'),
+            accept: $uploader.data('accept'),
+            process: $uploader.data('process'),
+            fileSingleSizeLimit: $uploader.data('fileSingleSizeLimit'),
+            ui: 'single'
+        });
+        uploader.on('file.finish', function (file) {
+            if (file.length && file.length > 0) {
+                var minute = parseInt(file.length / 60);
+                var second = Math.round(file.length % 60);
+                $("#minute").val(minute);
+                $("#second").val(second);
+                $("#length").val(minute * 60 + second);
+            };
+            // 附件上传限制3个
+            if($('#attachment-list li').length > 2){
+                layer.msg('最多上传3个附件哦～',{
+                    time:1500,
+                    shade: 0.6,
+                    shadeClose: true
+                });
+                return false;
+            };
+            var $metas = $('[data-role="metas"]');
+            var $ids = $('.' + $metas.data('idsClass'));
+            var $list = $('.' + $metas.data('listClass'));
+ 
+            $.get('/attachment/file/' + file.id + '/show', function (html) {
+                $list.append(html);
+                $ids.val(file.id);
+                $('#attachment-modal').modal('hide');
+                $list.siblings('.js-upload-file').hide();
+            });
+            $('#attachment-list').append('<li class="attachment-item mt10"><i class="icon-attached mr10"></i>' + file.name + '<a href="javascript:void(0);" data-id="' + file.id + '" class="js_removeItem underline-a ml20 font12">删除</a></li>');
+            parmaFileId.push(file.id);
+            // $('#fildIdCon').val(parmaFileId.join("|"));
+            if($('input[name="post[fileId]"]').length > 0){
+                $('input[name="post[fileId]"]').val(parmaFileId.join("|"));
+            }
+            else{
+                $('input[name="thread[fileId]"]').val(parmaFileId.join("|"));
+            }
+        });
+    };
+
+    $(document).off('click', '.js_removeItem').on('click', '.js_removeItem', function () {
+        var $t = $(this);
+        parmaFileId.splice(jQuery.inArray($t.attr('data-id'),parmaFileId),1 );
+        if($('input[name="post[fileId]"]').length > 0){
+            $('input[name="post[fileId]"]').val(parmaFileId.join("|"));
+        }
+        else{
+            $('input[name="thread[fileId]"]').val(parmaFileId.join("|"));
+        }
+        $t.parent().remove();
+    });
+})();

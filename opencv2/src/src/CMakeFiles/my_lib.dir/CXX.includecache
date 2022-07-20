@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/lk.h
+iostream
+-
+string
+-
+vector
+-
+opencv2/opencv.hpp
+-
+
+/home/mr/Downloads/practice/opencv2/src/lk.cpp
+lk.h
+/home/mr/Downloads/practice/opencv2/src/lk.h
+boost/format.hpp
+-
+

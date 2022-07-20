@@ -1,0 +1,244 @@
+'use strict';
+
+
+// 课程中心列表页面
+$('.stage-nav input,.field-nav a').on('click',function(){
+    $('#courseListForm').submit();
+});
+
+//判断执行一次动画
+$(function () {
+    $(document).ready(function () {
+        var a, b, c, c1, c2;
+        a = $(window).height();
+        $(window).scroll(function () {
+            var b = $(this).scrollTop();
+            $(".courseshow-img-top").each(function () {
+                c1 = $(this).offset().top;
+                if (a + b > c1 + 812) {
+                    $('.fixed-bottom-zero').show();
+                }
+                else {
+                    $('.fixed-bottom-zero').hide();
+                }
+           });
+        });
+    });
+});
+
+// 课程特色
+( function(){
+    $(".course-study-time li p").each(function () {
+        $(this).html($(this).html().replace("/", "<br >"));
+    });
+    if( $('.time_contener').height() < 100 ){
+         $('.mt43').css("margin-top","0");
+    }; 
+    // 视频大纲
+    $('.course-task-wrap  .es-icon-keyboardarrowdown').parents('.js-task-chapter').nextUntil('li.js-task-chapter').css("display", "none");
+   
+}());
+function tap(ev) {
+    //需要判断符合需求的点击区域
+    if ($('.js-pintuan-qrcode').length > 0 && !$(ev.target).parent().hasClass('js-pintuan-qrcode')) {
+        $('.js-pintuan-qrcode').removeClass('open');
+    }   
+};
+$(document).click(tap);//点击执行tap方法--拼团信息prover关闭
+$(document).off('click','.js-pintuan-qrcode').on('click','.js-pintuan-qrcode',function(){
+    var $self = $(this);
+    if ($self.hasClass('open')) {
+        return false;
+     }
+      if($self.attr('data_lock')){
+        return false;
+      }
+      $self.attr('data_lock',1).addClass('disable');
+      $.ajax({
+        url : $self.data("url"),
+        type : 'post',
+        dataType : 'json',
+        success : function(data){
+            $self.find(".qrcode-popover img").attr("src", data.img);
+            $self.addClass('open');
+        },
+        error : function(){
+            layer.msg('Oops~，网络发生错误了，请刷新重试～');
+        },
+        complete:function(){
+          $self.removeAttr('data_lock').removeClass('disable'); 
+        }
+      });
+});
+// 移动设备点击开团js-mpintuan-qrcode，提示文案:请使用手机微信浏览器打开
+$(document).off('click','.js-mpintuan-qrcode').on('click','.js-mpintuan-qrcode',function(){
+    layer.msg('请使用手机微信浏览器打开');
+});
+// 帮我选课
+$(document).off('click','.helpChoiceCourse').on('click','.helpChoiceCourse',function(){
+    $('.orientation-wrap').removeClass('hidden');
+});
+// 关闭
+$(document).off('click','.orientation-wrap .closeover').on('click','.orientation-wrap .closeover',function(){
+    $('.orientation-wrap').addClass('hidden');
+});
+
+// 公开课取消预约和课程取消预约
+$(document).off('click','.js_cancel_remind').on('click','.js_cancel_remind',function(){
+    var $t=$(this),$coursetype='',coursetext='';
+    console.log($t.attr('data_lock'));
+    if($t.attr('data_lock')){
+        return false;
+      }
+    var url=$t.attr('data-url');
+    if ($t.attr('data-type')=='course-type') {
+        $coursetype="课程";
+        coursetext="取消后无法在课程可以报名时，及时提醒到您！";
+    } else {
+        $coursetype="公开课";
+        coursetext="取消后无法在公开课开播前及时提醒到您！";
+    }
+    var cancelHtml="<div class='pl20 pt20' style='padding-right:100px;'>"+coursetext+"</div>";
+    var cancelRemindIndex = layer.open({
+        type:1,
+        area: ['auto', '200px'],
+        maxWidth:'400px',
+        title: '是否取消'+$coursetype+'预约？',
+        shade: 0.6,
+        content: cancelHtml,
+        btn: ['我再想想','取消预约'], //按钮
+        btn2: function () {
+            var $self = $(this);
+            if($self.attr('data_lock')){
+              return false;
+            }
+            $self.attr('data_lock',1).addClass('disable');          
+            $.ajax({
+              url : url,
+              type : 'get',
+              success : function(r){
+               console.log('success');
+                $t.attr('data_lock',1).addClass('disable');
+                layer.msg($coursetype+'取消预约成功');
+                setTimeout(function(){
+                    window.location.reload();
+                },2000);
+              },
+              error : function(){
+                layer.msg('Oops~,网络发生错误了，请刷新重试！');
+              },
+              complete:function(){
+                $self.removeAttr('data_lock').removeClass('disable'); 
+              }
+            });
+        },btn1: function(){ 
+            layer.close(cancelRemindIndex);
+        }
+    });
+    
+}); 
+
+
+// 公开课预约提醒弹窗
+// 公开课预约请求校验
+function openwechatCheck_login(iWechatNum) {
+    $.get("/common/wechat/check", {
+        scene_id: $('.openCourse-box input[name="scene_id"]').val()
+    }, function (data) {
+        if (data.code == 200) {
+            layer.msg('恭喜您，服务号绑定成功！');
+            setTimeout(function(){
+                window.location.reload();
+            },2000);
+        } 
+        else if(data.code == 201){
+            layer.msg('微信已绑定其他深蓝账号，请重新关注');
+            // openwechatCheck_login(iWechatNum);
+            setTimeout(function(){
+                openwechatCheck_login(iWechatNum);
+            },2000);
+        }
+        else {
+          setTimeout(function () {
+                if($('.openCourse-box input[name="scene_id"]').length > 0 && $('.openCourse-box:not(.hide)').length > 0){
+                    if ( ++ iWechatNum > 30) {
+                        layer.msg('由于您长时间未操作，已为您关闭弹窗啦～');
+                        setTimeout(function(){
+                            window.location.reload();
+                        },2000);
+                    } else {
+                        openwechatCheck_login(1);
+                    }
+                    
+                }
+            }, 2000);
+        }
+    });
+};
+// 国内绑定手机的号的用户，预约公开课+预约普通课程
+$(document).off('click','.js_verifiedMobil_sms').on('click','.js_verifiedMobil_sms',function(){
+    var $self = $(this),url=$self.attr('data-url'),verifiedMobile=$self.attr('data-verifiedMobile'),bindwebtext='开课前我们将以手机短信、服务号的形式提醒您！',coursetext='公开课开始';
+            if ($self.attr('data-type')=='course-type') {
+                coursetext="课程开放报名";
+                bindwebtext='课程开放报名后我们将以手机短信、服务号的形式提醒您！';
+            }
+            if($self.attr('data_lock')){
+                return false;
+            }
+            $self.attr('data_lock',1).addClass('disable');
+
+            $.ajax({
+                url : url,
+                type : 'post',
+                data : {
+                    ext: "86",
+                    mobile: verifiedMobile
+                },
+                success : function(r){
+                  if (r.code=="wechat_bind" && $('.openCourse-box').length > 0) {
+                      $('.openCourse-box .sub-text').text(bindwebtext);
+                      $('.openCourse-box,.openCourse-box .stepOpenbind').removeClass('hide');
+                      HandlecountDown(3);
+                      setTimeout(function () {
+                        window.location.reload();
+                    }, 4000);
+
+                  } 
+                  else if (r.code=="wechat_not_bind" && $('.openCourse-box').length > 0) {
+                      var noBindHtml='<input type="hidden" value="'+r.data.scene_id +'" name="scene_id"><img class="weixinOpen" src="'+r.data.wechat_img +'"><p class="tips"><i class="es-icon es-icon-weixin" style="color:#1BA000;padding-right: 3px;"></i>打开微信扫一扫关注</p><p class="tip-text">扫码绑定深蓝教育服务号，'+coursetext+'后第一时间提醒您！以及接收更多课程优惠信息</p>';
+                      $('.openCourse-box .stepOpenunbind').append(noBindHtml);
+                      $('.openCourse-box').removeClass('hide');
+                      openwechatCheck_login(1);
+                  }
+                  else{
+                    window.location.reload();
+                  }
+                  
+                },
+                error : function(){
+                    // layer.msg('Oops,网络发生错误了，请刷新重试！')
+                },
+                complete:function(){
+                    $self.removeAttr('data_lock').removeClass('disable'); 
+                }
+            });
+});
+// end
+// 详细信息
+var $turnoff= $('#courseset-detail-form .turn-off');
+if($("input[name='isCertain']:checked").val()==0){
+   $turnoff.hide();
+}
+$("input[name='isCertain']").on('click',function(){
+   var $this = $(this);
+   var $value=$this.val();
+   if($value == 0 )
+   {
+       $turnoff.hide();
+   }
+   else{
+       $turnoff.show();
+   }
+});
+
+

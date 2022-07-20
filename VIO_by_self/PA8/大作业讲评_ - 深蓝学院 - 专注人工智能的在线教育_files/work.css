@@ -1,0 +1,1002 @@
+ p {
+ 	line-height: 22px;
+ }
+
+ i {
+ 	font-style: normal;
+ }
+.h75{
+	height: 75px !important;
+}
+.displaysla{
+	display: block !important;
+}
+.displayhidden{
+	display:none !important;
+}
+ .fl {
+ 	float: left;
+ }
+
+ .fr {
+ 	float: right;
+ }
+.w25{
+	width: 25% !important;
+}
+.visibility-hidden{
+	visibility: hidden;
+}
+ a.icon-recall {
+ 	text-decoration: underline !important;
+ 	color: #4A90E2;
+ 	margin-left: 10px;
+ }
+
+ i.time {
+ 	font-size: 14px !important;
+ 	padding-left: 20px;
+ 	color: #888888;
+ }
+
+ .font12 {
+ 	font-size: 12px !important;
+ }
+
+ .font13 {
+ 	font-size: 13px !important;
+ }
+
+ .modal-btn {
+ 	color: #0091FF;
+ }
+.border-top-dash-gray{
+	border-top: 1px dashed #dedbdb;
+}
+ .modal-btn-primary {
+ 	width: 64px;
+ 	border-radius: 4px !important;
+ }
+
+ .pd3and24 {
+ 	padding: 3px 24px !important;
+ }
+ .pd-tb20{
+	 padding: 20px 0;
+ }
+ .visible-dis-inline {
+ 	display: inline !important;
+ }
+
+ /* 附件toast提示 */
+ .attachment-handle-message-pop {
+ 	position: fixed;
+ 	min-width: 180px;
+ 	line-height: 22px;
+ 	border: 1px solid #D3D4D3;
+ 	box-shadow: none;
+ 	background-color: #000;
+ 	filter: alpha(opacity=60);
+ 	background-color: rgba(0, 0, 0, 0.7);
+ 	border-radius: 6px;
+ 	color: #fff;
+ 	border: none;
+ 	padding: 12px 25px;
+ 	text-align: center;
+ 	top: 50%;
+ 	left: 50%;
+ 	margin-top: -24px;
+ 	margin-left: -110px;
+ 	opacity: 0;
+ 	z-index: -1;
+ }
+
+ .attachment-handle-message-pop.show {
+ 	opacity: 1;
+ 	z-index: 10;
+ }
+ .btn-default-sl,
+ .btn-default-sl.active,
+ .btn-default-sl.focus,
+ .btn-default-sl:focus,
+ .btn-default-sl:hover {
+ 	color: #FFFFFF;
+ 	background-color: #0091FF;
+ 	border-color:  #0091FF;
+ }
+ /* 学生答题中的样式修改 */
+ /* 基于bootstrap复写了一个色值为4A90E2的按钮 */
+ .btn-4A90E2,
+ .btn-4A90E2.active,
+ .btn-4A90E2.focus,
+ .btn-4A90E2:focus {
+ 	color: #4A90E2;
+ 	border-color: #4A90E2;
+ 	padding: 4px 13px;
+ }
+
+ .btn-4A90E2:hover {
+ 	color: #FFFFFF;
+ 	background-color: #4A90E2;
+ 	border-color: #4A90E2;
+ }
+
+ .btn-bg90E2,
+ .btn-bg90E2.active,
+ .btn-bg90E2.focus,
+ .btn-bg90E2:focus,
+ .btn-bg90E2:hover {
+ 	color: #FFFFFF;
+ 	background-color: #4A90E2;
+ 	border-color: #4A90E2;
+ }
+
+ .btn-4A90E2.disabled,
+ .btn-4A90E2.disabled:hover,
+ .btn-4A90E2[disabled],
+ .btn-4A90E2[disabled]:hover {
+ 	color: #616161;
+ 	background-color: #f5f5f5;
+ 	border-color: #dcdcdc;
+ }
+
+ .wid82 {
+ 	width: 82px;
+ }
+ .up-attached {
+ 	border: 1px #CCCCCC dashed;
+ 	padding: 14px;
+ }
+
+ .a-upload {
+ 	position: relative;
+ 	padding-left: 10px;
+ 	display: inline-block;
+ 	color: #4A90E2;
+ }
+
+ .a-upload input {
+ 	position: absolute;
+ 	opacity: 0;
+ 	display: inline-block;
+ 	width: 100%;
+ 	cursor: pointer;
+ }
+
+ .panel-footer-btn {
+ 	border-top: 0;
+ 	text-align: center;
+ 	/* margin-bottom: 30px; */
+ 	background-color: #FFFFFF
+ }
+
+ .attached-description {
+ 	padding-bottom: 20px;
+ }
+
+ .attachment-do-tip {
+ 	color: #E6A23C;
+ 	font-size: 12px;
+ }
+
+ .btn-againdo-default {
+ 	font-size: 12px;
+ 	color: #4A90E2;
+ 	background: #FFFFFF;
+ 	border: 1px solid #4A90E2;
+ 	border-radius: 4px;
+ 	padding: 5px 25px;
+ }
+
+ .min-height {
+ 	height: 100px;
+ 	overflow: hidden;
+ }
+
+ /* 迭代作业 */
+ .iteration {
+ 	margin-top: -25px;
+ }
+
+ .iteration-con .attached-description p {
+ 	padding-left: 0px;
+ 	padding-bottom: 5px;
+ 	margin-top: 0px;
+ }
+
+ .iteration-con .posi-relation-left {
+ 	position: relative;
+ 	padding-left: 82px;
+ 	color: #888888;
+	 margin-top: 15px;
+	 min-height: 20px;
+ }
+
+ /* .posi-relation-left a:hover{
+	color: #005BAC;
+} */
+ .posi-relation-left.student-again-ask {
+ 	background: #F5F8FA;
+ 	margin-left: 82px;
+ 	padding: 10px;
+ 	font-size: 12px;
+ }
+
+ .posi-relation-left.hours-tip {
+ 	background: #FDF6ED;
+ 	padding: 9px 20px;
+ 	border-radius: 4px;
+ 	font-size: 13px;
+ 	color: #E6A23C;
+ 	line-height: 18px;
+ 	position: relative;
+ }
+
+ .posi-relation-left.hours-tip .close-hours-tip {
+ 	position: absolute;
+ 	top: 10px;
+ 	color: #CEC0B8;
+ 	right: 14px;
+ }
+
+ .student-again-ask .again-ask-content {
+ 	display: block;
+ 	padding-left: 65px;
+ 	position: relative;
+ 	top: -23px;
+ 	color: #6D7278;
+ }
+
+ .student-again-ask .again-ask-btn {
+ 	position: relative;
+ 	top: -20px;
+ }
+
+ .student-ask-box.toShow,
+ .student-again-btnwrap.toShow,
+ .student-again-wrap.toShow,
+ .result-choice-text.toShow,
+ .result_choice.toShow,
+ .teacher-ask-box.toShow,
+ .again-ask-btn.toShow,
+ .fine-work02.toShow {
+ 	display: none;
+ }
+
+ .student-ask-box.toHide,
+ .student-again-btnwrap.toHide,
+ .student-again-wrap.toHide,
+ .result-choice-text.toHide,
+ .result_choice .toHide,
+ .teacher-ask-box.toHide,
+ .again-ask-btn.toHide,
+ .fine-work02.toHide {
+ 	display: block;
+ }
+
+ .student-ask-box .btn-box,
+ .teacher-ask-box .btn-box {
+ 	display: block;
+ 	text-align: right;
+ }
+
+ .nobtn-default {
+ 	color: #888888;
+ }
+
+ .iteration-con .posi-relation-left span.do-writing {
+ 	color: #3F4A54;
+ 	position: absolute;
+ 	left: 0;
+ }
+
+ .iteration-con .teacher-box.posi-relation-left {
+ 	background: #FAFBFD;
+ 	line-height: 60px;
+ 	font-size: 16px;
+ 	color: #2C2E40;
+ 	padding-left: 20px;
+ }
+
+ .iteration-con .teacher-box i {
+ 	margin-left: 6px;
+ 	padding: 2px 6px;
+ 	background: #DBECFF;
+ 	border-radius: 10px 10px 10px 0px;
+ 	font-size: 12px;
+ 	color: #005BAC;
+ }
+
+ .underline-a,
+ .underline-a:link,
+ .underline-a:visited,
+ .underline-a:active {
+ 	text-decoration: underline !important;
+ 	margin-left: 12px;
+ 	color: #2A73C8;
+ }
+
+ .underline-a:hover {
+ 	color: #2A73C8;
+ }
+
+ /* 针对附件作业面板坑-修改 */
+
+ .panel-attached {
+ 	padding: 0;
+ }
+
+ .panel-attached .panel-heading {
+ 	background: #FAFBFD;
+ 	color: #2C2E40;
+ 	padding: 13px 20px;
+ 	border-bottom: 0;
+ 	font-size: 16px;
+ 	font-weight: 600;
+ }
+
+ .nav-attached {
+ 	margin: 0 20px;
+ 	border-bottom: 1px solid #EEEEEE;
+ }
+
+ .nav-attached li {
+ 	display: inline-block;
+ 	float: left;
+ 	margin-right: 30px;
+ 	font-size: 16px;
+ }
+
+ .nav-attached li a {
+ 	padding-bottom: 12px;
+ 	display: inline-block;
+ 	color: #3F4A54;
+ }
+
+ .nav-attached li.active a {
+ 	border-bottom: 4px solid #2A73C8;
+ 	color: #2A73C8;
+ }
+
+ .iteration-con {
+ 	padding: 0 20px;
+ }
+
+ /* 面板头像 */
+ .wh24 {
+ 	width: 24px;
+ 	height: 24px;
+ 	margin-right: 8px;
+ }
+
+ /* 状态填坑 */
+ .testpaper-titlebar {
+ 	position: relative;
+ 	padding: 10px 20px 13px 0;
+ }
+
+ .testpaper-status {
+ 	position: absolute;
+ 	right: 0;
+ 	top: -10px;
+ }
+
+ .homwork-status .label,
+ .testpaper-status .label {
+ 	border-radius: 20px;
+ }
+
+ /* .label-info-att{
+	background-color: #E7FFCE;;
+	color: #4C8D00;
+} */
+ .label-info-att {
+ 	background-color: #FFEECE;
+ 	color: #FF6000;
+ }
+
+ .label-wait-att {
+ 	background-color: #E7FFCE;
+ 	color: #4C8D00;
+ }
+
+ .label-primary-att {
+ 	background-color: #E8F3FF !important;
+ 	color: #4A90E2;
+ }
+
+ .label-success-att {
+ 	color: #FF1313;
+ 	background-color: #FFE8E8;
+ }
+
+ /* 弹窗 */
+ .layui-layer-dialog {
+ 	border-radius: 8px !important
+ }
+
+ .layer-success {
+ 	text-align: center;
+ }
+
+ .layer-success img {
+ 	width: 60px;
+ 	height: 60px;
+ }
+
+ .layer-success b {
+ 	padding-top: 20px;
+ 	padding-bottom: 12px;
+ 	display: inline-block;
+ }
+
+ /* 编辑器 */
+ .essay-inputmt34 {
+ 	margin-top: -34px;
+ }
+
+ /* 老师批阅最新提交作业区块 */
+ .teacher-check {
+ 	padding-top: 20px;
+ }
+
+ /* 附件作业的小图片 */
+ .icon-attached {
+ 	background-image: url(../img/attached/zuoyefujian_icon.png);
+ 	width: 13px;
+ 	height: 13px;
+ 	display: inline-block;
+ 	background-size: 100%;
+ }
+
+ label.yes-no {
+ 	margin-top: 20px;
+ }
+
+ label.yes-no span {
+ 	color: rgb(0, 0, 0, 0.56);
+ 	font-weight: normal !important;
+ }
+
+ /* label.yes-no .attachment-tip{
+	display: none;
+} */
+
+
+ .up-attached i.icon {
+ 	background-image: url(../img/attached/shangchuanyihou_icon.png);
+ 	width: 13px;
+ 	height: 13px;
+ 	display: inline-block;
+ 	background-size: 100%;
+ 	margin-right: 12px;
+ }
+
+ .uploader-content {
+ 	background-color: #FFFFFF;
+ 	margin-top: 10px;
+ }
+
+ .uploader-container {
+ 	border-color: #CCCCCC !important;
+ }
+
+ .myquestion-attr .panel-default {
+ 	padding: 0;
+ }
+
+ .myquestion-attr .panel-body {
+ 	padding: 20px !important;
+ 	min-height: 534px;
+ }
+
+ .myquestion-attr .panel-heading {
+ 	background: #FAFBFD !important;
+ 	padding: 13px 20px !important;
+ 	border-bottom: 0 !important;
+ 	font-weight: bold;
+ }
+/* 详情页新增视频预览页面 */
+.tcp-skin .tcp-right-click-popup-menu{
+	display: none !important;
+}
+.courser-video-wrap{
+	margin-top: 50px;
+}
+.courser-video-wrap .video-title{
+	color: #2C3240;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+.courser-video-wrap .tcplayer {
+	margin: 30px auto 0;
+  }
+  .courser-video-wrap .player-course-id {
+	width: 100%;
+	max-width: 916px;
+	height: 56vw;
+	max-height: 515px;
+  }
+/* 设置logo在高分屏的显示样式 */
+  /* @media only screen and (min-device-pixel-ratio: 2), only screen and (-webkit-min-device-pixel-ratio: 2) {
+	.tcp-logo-img {
+	  width: 50%;
+	}
+  } */
+/* end */
+ @media (max-width:640px) {
+ 	#cke_attachment-do-field {
+ 		width: 90%;
+ 	}
+
+ 	.panel-default .bor-btm0 {
+ 		width: 90%;
+ 	}
+  /* 详情页视频 */
+  .courser-video-wrap .video-title{
+	color: #444;
+    font-size: 13px;
+}
+  .courser-video-wrap{
+	margin-top: 20px;
+  }
+  .courser-video-wrap .tcplayer {
+	margin: 12px auto 0;
+  }
+  .courser-video-wrap .player-course-id {
+	width: 90vw;
+	height: 50.6vw;
+  }
+  /* 详情页视频end */
+ }
+
+ .attached-description img {
+ 	max-width: 100%;
+ }
+
+ /* 置灰 */
+ .ash-placing {
+ 	cursor: default !important;
+ 	opacity: 0.2 !important;
+ }
+
+ /* 我的回答优秀作业的话，有个标志 */
+ .iteration-con .tab-pane,
+ .iteration .iteration-con {
+ 	position: relative;
+ }
+
+ .fine-work021 {
+ 	position: absolute;
+ 	top: -19px;
+ 	right: 20px;
+ 	z-index: 13;
+ }
+
+ .fine-work02 {
+ 	position: absolute;
+ 	top: -19px;
+ 	right: 0;
+ 	z-index: 13;
+ }
+
+ /* 我的作业列表,老师作业批阅列表添加优秀作业图标 */
+ .homework-list tr,
+ .check-table {
+ 	position: relative;
+ }
+
+ .fine-work01 {
+ 	position: absolute;
+ 	/* top: 0px; */
+ 	right: 0;
+ 	z-index: 13;
+ 	margin-top: -10px;
+ }
+
+ /* 老师批阅的最新提交作业的图片过大 */
+ .iteration .teacher-check img {
+ 	max-width: 100%;
+ }
+
+ .iteration .iteration-con p img {
+ 	max-width: 100%;
+ }
+
+ /* 笔记栏目 展开全文/收起全文 */
+ a.js-more-show {
+ 	color: #005bac;
+ }
+
+ a.js-more-show:focus,
+ a.js-more-show:hover {
+ 	color: #0064b3;
+ }
+
+ .note-list .note-item .content {
+ 	transition: all 0s ease !important;
+ }
+
+ /* 首页导航 */
+ /* .headerIndex {box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	background-color: #F5F8FA !important;
+} */
+ .headerIndex {
+ 	background: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, #000000 200%) !important;
+ 	height: 80px;
+ 	/* max-width: 1920px; */
+ 	margin: 0 auto;
+ 	/* padding-top: 10px; */
+ 	box-shadow: none !important;
+ 	-webkit-box-shadow: none !important;
+ }
+
+ .headerIndex .header-box {
+ 	margin-top: 10px;
+ }
+
+ .es-poster.swiper-container {
+ 	top: -60px;
+ }
+
+ .es-nav-white .headerIndex .nav.navbar-nav>li>a,
+ .es-nav-white .headerIndex .nav.user-nav>li>a {
+ 	color: #FFFFFF !important;
+ }
+
+ .headerIndex .navbar-header .navbar-brand .logo {
+ 	background: url(/static-dist/app/img/shenlan19/shenlanxueyuan@2x.svg) no-repeat center !important;
+ }
+
+ .es-nav-white .es-header .navbar-header .navbar-brand,
+ .es-nav-white .es-header .navbar-mobile .navbar-more {
+ 	color: #b7b4b4 !important;
+ }
+
+
+
+ /* 学员追问弹窗 */
+ .student-again-wrap {
+ 	width: 100%;
+ 	height: 100%;
+ 	position: fixed;
+ 	top: 0;
+ 	bottom: 0;
+ 	left: 0;
+ 	right: 0;
+ 	background: rgba(0, 0, 0, 0.5);
+ 	z-index: 1;
+ }
+
+ .student-again-wrap .again-content {
+ 	max-width: 400px;
+ 	width: 90%;
+ 	/* height: 200px; */
+ 	background: #FFFFFF;
+ 	border-radius: 8px;
+ 	padding: 20px;
+ 	margin: -100px auto;
+ 	position: relative;
+ 	top: 50%;
+ 	z-index: 11;
+
+ }
+
+ .student-again-wrap .again-content .again-header {
+ 	font-size: 18px;
+ 	color: #2C2E40;
+ 	border-bottom: 1px solid #EEEEEE;
+ 	padding-bottom: 14px;
+ }
+
+ .student-again-wrap .again-content .again-body {
+ 	padding: 20px 0 43px 0;
+ 	color: #888888;
+ 	font-size: 14px;
+ }
+
+ .student-again-wrap .again-footer {
+ 	text-align: right
+ }
+
+ .student-again-wrap .again-footer .again-default {
+ 	display: inline-block;
+ 	width: 66px;
+ 	height: 32px;
+ 	line-height: 34px;
+ 	background: #FFFFFF;
+ 	border: 1px solid #DEDEDE;
+ 	border-radius: 4px;
+ 	font-size: 14px;
+ 	color: #3F4A54;
+ 	text-align: center;
+ }
+
+ .again-footer .again-default.again-submit {
+
+ 	background: #4A90E2;
+ 	;
+ 	border: 1px solid #4A90E2;
+ 	color: #fff;
+ }
+
+
+ /* 老师批阅结果remark-result-wrap */
+ /* polyv视频不能播放时的显示 */
+ .mobil-polyv-tip {
+	position: absolute;
+	height:100%;
+	width: 100%;
+	background: #212121;
+	color: #fff;
+	padding:120px 20px 20px;
+	text-align: center;
+	z-index:1001;
+}
+
+ /* 课程小序章 */
+ .preface-form .preface-title {
+ 	font-size: 16px;
+ 	color: #2F3C52;
+ 	font-weight: 600;
+ }
+ .preface-form .form-title{
+	 border-bottom: 1px solid #EEEEEE;
+	 margin-bottom: 40px;
+ }
+ .preface-form .form-title h3{
+	font-size: 24px;
+	color: #2C2E40;
+	font-weight: 600;
+ }
+ .preface-form .form-title p{
+	font-size: 14px;
+	color: #787E99;
+	margin: 14px auto 20px;
+ }
+ .preface-form .preface-wrap {
+ 	margin: 0 140px 40px;
+ 	border-bottom: 1px #E4E6ED dashed;
+ }
+
+ .preface-form .preface-wrap.noborder {
+ 	border: 0 !important;
+ }
+
+ .preface-form .radio {
+ 	margin-top: 16px;
+ 	margin-bottom: 16px;
+ }
+ .preface-form .radio input{
+	opacity: 0;
+ }
+.preface-form .radio .input-icon{
+	background: url(/static-dist/app/img/danxuan01@2x.png) no-repeat;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    position: absolute;
+    left: -1px;
+    top: 2px;
+    background-size: 100% 100%;
+}
+.preface-form .radio input[type=radio]:checked+.input-icon {
+	background: url(/static-dist/app/img/danxuan02@2x.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+ .preface-success {
+	display: block;
+    width: 184px;
+    background: url(/static-dist/app/img/shenlan2020/tijiaowancheng_pic@2x.png) no-repeat;
+    background-size: 100% auto;
+    margin: 50% auto 12px;
+	text-align: center;
+	-webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+ }
+ .preface-success .tip-text{
+	padding-top: 150px;
+    font-size: 18px;
+    color: #2C2E40;
+ }
+
+
+ 
+ /* 后台课程小序章 */
+ .data-statixtics{
+	padding: 20px;
+    background: #f5f5f5;
+ }
+ .data-statixtics p{
+	width: 65%;
+    display: inline-block;
+    float: left;
+ }
+ .data-statixtics span{
+	width: 30%;
+    display: inline-block;
+    float: right;
+ }
+ /* 支付流程优化 */
+ .fixed-order-wrap{
+	position: fixed;
+	background: #fff;
+	box-shadow: 0 -4px 10px 0 rgba(153,165,177,0.10);
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    margin: 0 !important;
+    line-height: 60px;
+    z-index: 100;
+ }
+ .time-down-wrap{
+	background: #FDF6ED;
+    font-size: 13px;
+    color: #E6A23C;
+    padding: 9px 5px 9px 20px;
+    border-color: #FDF6ED;
+ }
+ .time-down-wrap .time-content{
+	font-size: 13px;
+	color: #FD1600;
+	font-weight: 500;
+ }
+ /* 金额 */
+ .fixed-pay-container{
+	white-space: nowrap;
+ }
+ .fixed-pay-container .pay-rmb-box{
+    vertical-align: middle;
+    color: #3F4A54;
+ }
+/* .order-field-lable{
+	width: 120px;
+    text-align: center;
+} */
+.total-price-group .total-price-box{
+	margin-right: 10px;padding-right: 20px;line-height:50px; margin-top:0px;
+}
+.order-pay .pay-rmb.pay-rmb-big{
+	font-size:24px;
+}
+.order-price-text{
+	display: inline-block;width: 120px;text-align: right;
+}
+
+/* .order-detail-bg{
+	padding: 23px 20px;
+    border-color: #eee;
+    border-left: 0;
+    border-right: 0;
+} */
+.deduction .right-maney-style{
+	text-align: right;
+    padding: 20px 20px 8px 0px;
+    color: #3F4A54;
+    line-height: 19px;
+}
+
+/* 优惠券创建订单后不可以点击 */
+.use-coupon .coupon-disabled-text{
+	position: absolute;
+	left: 0;
+	width: 100%;
+    font-size: 16px;
+    color: #2F3C52;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0,0,0,0.20);
+    top: 86px;
+	font-weight: 500;
+	z-index: 20;
+  
+}
+/* .use-coupon .coupon-disabled-text.coupons{
+	top: 86px;
+} */
+.coupon-content-disabled{
+	position: relative;
+}
+.coupon-content-disabled li,
+.coupon-content-disabled .use-btn,
+.coupon-content-disabled  .coupon-use-cancel{
+ pointer-events:none;
+}
+.coupon-content-disabled .filterblurbox{
+	-webkit-filter: blur(3px);
+	filter: blur(3px);
+}
+.coupon-content-disabled::before{
+	content: '';
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background: rgba(0,0,0,0.2); */
+    z-index: 10;
+    left: 0;
+    top: 0;
+}
+/* js */
+.order-codepay {
+	text-align: center;
+}
+.order-codepay .title{    
+	font-size: 18px;
+    color: #485159;
+	margin: 32px auto 20px;
+}
+
+.order-codepay .qrurl img{
+	box-shadow: 0 0 4px 0 rgba(164,164,164,0.50);
+    width: 170px;
+    height: 170px;
+}
+.order-codepay .paytip{
+	width: 152px;
+    background: url(/static-dist/app/img/shenlan2020/saoyisao_icon@2x.png) no-repeat 1px 2px;
+    background-size: 26px 26px;
+    font-size: 12px;
+    color: #485159;
+    line-height: 15px;
+    text-align: left;
+    margin: 20px auto 40px;
+    padding-left: 37px;
+}
+.order-codepay .web-orderpay{
+	font-size: 12px;
+	color: #3D464D;
+	margin-bottom: 40px;
+}
+.order-codepay .web-orderpay.wxpay{
+	display: none;
+}
+.order-codepay .web-orderpay .pay-link{
+    color: #0091FF;
+    text-decoration: underline !important;	
+}
+
+/* layer 关闭样式重置 */
+.layui-layer-setwin .layui-layer-close2{
+	right: 0!important;
+    top: 4px!important;
+    background: url(/static-dist/app/img/shenlan19/tanchuangguanbi_icon@2x.png) no-repeat !important;
+    background-size: 15px 15px !important;
+}
+.layui-layer{
+	border-radius: 8px !important;
+}
+.layui-layer .layui-layer-title{
+	margin: 0 20px 0 20px;
+	background-color:#fff !important;
+	margin: 0 20px 0 20px;
+    background-color: #fff;
+    font-size: 18px;
+    color: #2C2E40;
+    height: 58px;
+    line-height: 58px;
+    padding-left: 0;
+}
+.layui-layer-page .layui-layer-btn a{
+	height: 34px ;
+    line-height: 34px ;
+    border-radius: 4px;
+}
+/* {    background: #4A90E2;
+    border-radius: 4px;} */
+ /* 支付流程优化end */
+ @media (max-width:768px) {
+	.panel-attached {
+		padding: 0 !important;
+	}
+	/* 课程小序章 */
+	.preface-form .preface-wrap{
+		margin: 0 0 20px;
+	}
+	.preface-form .form-title{
+		margin-bottom: 20px;
+	}
+
+}

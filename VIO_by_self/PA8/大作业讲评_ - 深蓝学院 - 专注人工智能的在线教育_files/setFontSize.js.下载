@@ -1,0 +1,243 @@
+'use strict';
+(function () {
+    function add_font_size(){
+        var deviceWidth=document.documentElement.clientWidth;
+        if(deviceWidth > 768){ deviceWidth = 768 }
+        document.documentElement.style.fontSize = deviceWidth / 3.75+ 'px';
+    };
+    add_font_size();
+    function resize(){
+        window.onresize=add_font_size();
+    }
+    requestAnimationFrame(resize);
+    /* if ($.cookie("is_onelogin") != 1) {
+        $('.index-wrap').removeClass('hide');
+    }; */
+    
+})();
+
+(function () {
+    // 点击“个人中心”显示/隐藏下拉框
+    var personalCenterElement = $('.mobile-header .icon-personal-center'),
+        dropdownMenuElement = $('.mobile-header .dropdown-menu');
+    personalCenterElement.on (
+        'touchstart click tap',
+        function () {
+            dropdownMenuElement.css('display') != 'none' ? dropdownMenuElement.hide() : dropdownMenuElement.show();
+            return false;
+        }
+    );
+    $(document).on(
+        'click',
+        function () {
+            dropdownMenuElement.hide();
+        }
+    );
+    dropdownMenuElement.on (
+        'click',
+        function (event) {
+             event.stopPropagation();
+        }
+    );
+
+    // 导航栏定位当前页面
+    var navLiElements = $('#nav li'),
+        windowUrl = location.pathname,
+        wholeWindowUrl = location.protocol + '//' + location.hostname + location.pathname;
+
+    if (wholeWindowUrl.charAt(wholeWindowUrl.length - 1) == '/') {
+        wholeWindowUrl = wholeWindowUrl.substr(0, wholeWindowUrl.length - 1);
+    }
+    navLiElements.each(function (index, item) {
+        var currentLi = $(item),
+            linkUrl = currentLi.find('a').attr('href');
+
+        if(index != 6) {
+            if (linkUrl.indexOf('http') != -1) {
+                if (linkUrl == wholeWindowUrl) {
+                    currentLi.addClass('active')
+                        .siblings()
+                        .removeClass('active');
+                }
+            }
+            else {
+                if (linkUrl == windowUrl) {
+                    currentLi.addClass('active')
+                        .siblings()
+                        .removeClass('active');
+                }
+            }
+        }
+
+    });
+	/* $(document).bind("click",function(e){
+		// if(e.target).closest("#txt")
+		$(".navbar .ld_cont").hide();
+	}) */
+	$(".navbar .ld_icon").click(function(event){
+		$(".navbar .ld_cont").toggle();
+		event.stopPropagation();
+	})
+	$(".navbar .ld_cont div a").click(function(event){
+		$(this).addClass("active").siblings().removeClass("active");
+	});
+})();
+
+$('.merge-tab-nav a').click(function(){
+    　　$(this).addClass('active').siblings().removeClass('active');
+});
+/* var varLogin;
+if($('.index-wrap:not(.hide)').length > 0)
+{
+    check_login();//弹窗二维码
+}
+function check_login() {
+    $.get("/default/wechat/wechatcheck", {
+        scene_id: $('.index-wechat input[name="scene_id"]').val()
+    }, function (data) {
+        if (data.url != '') {
+            window.location.href = data.url;
+        } else {
+            varLogin = setTimeout(function () {
+                if ($('.index-wrap:not(.hide)').length > 0) {
+                    check_login(); //弹窗二维码
+                }
+            }, 2000);
+        }
+    });
+}; */
+// 通用倒计时(例如 3，2，1)
+function HandlecountDown(num) {
+    var item = $(".js-turn");
+    item.find(".js-countdown").text(num);
+    if (num-- > 0) {
+        setTimeout(function () {
+            HandlecountDown(num);
+        }, 1000);
+    }
+    else{
+        item.parents('.countdown-box').remove();
+    }
+};
+// 右下角 返回顶部
+$('#goTopSl').off('click').on('click',function(){
+    var scrollTop = $(window).scrollTop();
+   $("body,html").animate({
+     scrollTop: 0
+    }, 300);
+});
+// 公众号请求是否绑定成功
+function wechatCheck_login(iWechatNum) {
+    $.get("/common/wechat/check", {
+        scene_id: $('.footer-wechat input[name="scene_id"]').val()
+    }, function (data) {
+        if (data.code == 200) {
+            $('.wechatSetting-box .wechat-step1').remove();
+            $('.wechatSetting-box .wechat-step-success').removeClass('hide');
+            HandlecountDown(3);
+        } 
+        else if(data.code == 201){
+            $('.wechatSetting-box').remove();
+            layer.msg('微信已绑定其他深蓝账号，请重新关注',{
+                time:3000,
+                shade: 0.6,
+                shadeClose: true
+            });
+        }
+        else {
+          setTimeout(function () {
+                if($('.wechatSetting-box .wechatSceneId').length > 0){
+                    if ( ++ iWechatNum > 30) {
+                        $('.wechatSetting-box').remove();
+                        layer.msg('由于您长时间未操作，已为您关闭弹窗啦～',{
+                            time:5000,
+                            shade: 0.6,
+                            shadeClose: true
+                        }); 
+                    } else {
+                        wechatCheck_login(1);
+                    }
+                    
+                }
+            }, 2000);
+        }
+    });
+};
+// 右下角 公众号
+$('.js_service-setting').off('click').on('click',function(){
+    var $self = $(this);
+    if($self.attr('data_lock')){
+      return false;
+    };   
+    $self.attr('data_lock',1).addClass('disable');
+    $.ajax({
+        url: '/common/wechat/window',
+        type: 'get',
+        success: function (r) {           
+            $('#settingContent')[0].innerHTML=r;
+            if($('.wechatSetting-box .wechatSceneId').length > 0){
+                wechatCheck_login(1);
+            };
+        },
+        error: function () {
+           alert('未知网络错误！请刷新重试～');
+        },
+        complete: function () {
+            $self.removeAttr('data_lock').removeClass('disable'); 
+        }
+    });
+});
+// 遮罩层关闭
+/* $(document).off('click','.index-wrap .closeover').on('click','.index-wrap .closeover',function(){
+    var $t=$(this);
+    $t.parents('.index-wrap').remove();
+    $.cookie('is_onelogin', '1', {
+        path: '/',domain:'shenlanxueyuan.com'
+    });
+    clearTimeout(varLogin);    
+}); */
+// 公众号相关服务号弹窗关闭
+$(document).off('click','.wechatSetting-box,.wechatSetting-box .closeover').on('click','.wechatSetting-box,.wechatSetting-box .closeover',function(){
+ $('.wechatSetting-box').remove();
+});
+// 公开课预约成功弹窗关闭
+$(document).off('click','.openCourse-box .closeover').on('click','.openCourse-box .closeover',function(){
+    // $('.openCourse-box').addClass('hide');
+    window.location.reload();
+});
+
+
+//7天不显示
+/* $('#mssk').on('click',function () {
+    $.get("/user/close/public",'',function (data) {
+        if (data.status == 'ok'){
+            $('.index-wrap').addClass('hide');
+            clearTimeout(varLogin);
+        }
+    })
+});
+$('.logout-unbind').off('click').on('click',function(){
+    $.cookie('is_onelogin', null, {
+        path: '/',domain:'shenlanxueyuan.com'
+      });
+}) */
+$('.logout-unbind').off('click').on('click',function(){
+    $.cookie('is_cookienum', null, {
+        path: '/',domain:'shenlanxueyuan.com'
+      });
+});
+// 个人设置-基础信息-复制转化码
+var $copy_btn = $('#copy');
+$copy_btn.off('click').on('click', function(){
+    if(document.execCommand){
+        var inputText = document.getElementById('copy_content_inp');
+        var currentFocus = document.activeElement;
+        inputText.focus();
+        inputText.setSelectionRange(0, inputText.value.length);
+        document.execCommand('copy');
+        currentFocus.focus();
+        alert('复制成功～');//操作提示信息('复制成功～');
+    }else{
+        alert('该浏览器不支持，请手动复制～');//操作提示信息('该浏览器不支持，请手动复制～');
+    }
+});

@@ -1,0 +1,6 @@
+model_checkpoint_path: "model.latest"
+all_model_checkpoint_paths: "model-8250"
+all_model_checkpoint_paths: "model-8800"
+all_model_checkpoint_paths: "model-9350"
+all_model_checkpoint_paths: "model-9900"
+all_model_checkpoint_paths: "model.latest"

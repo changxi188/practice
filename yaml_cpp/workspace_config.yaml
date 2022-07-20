@@ -1,0 +1,935 @@
+build_platform:
+  aarch64_ubuntu-16.04:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/aarch64/gcc-5.5.0/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+      #ROS
+      ROS_LANG_DISABLE: geneus:genlisp:gennodejs
+      ROS_PYTHON_VERSION: $ENV{ROS_PYTHON_VERSION}
+      CMAKE_PREFIX_PATH: "$SHELL{dirname `find ${SYSROOT}/opt/ros -name .catkin`}"
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,\
+                ${SYSROOT}/usr/lib/aarch64-linux-gnu:\
+                ${SYSROOT}/lib/aarch64-linux-gnu:\
+                ${HOLO_ROOT}/3rdparty/lib:\
+                ${HOLO_ROOT}/lib"
+      LD_LIBRARY_PATH: "${SYSROOT}/usr/lib/aarch64-linux-gnu:\
+                        ${SYSROOT}/lib/aarch64-linux-gnu:\
+                        ${HOLO_ROOT}/3rdparty/lib:\
+                        ${HOLO_ROOT}/lib"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/aarch64/ubuntu-16.04
+    machine: aarch64
+    system: linux
+    target_root: /opt/DataStore/targets/ubuntu-16.04-arm64
+    toolchain_prefix: aarch64-linux-gnu-
+
+  mdc300_ubuntu-16.04:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/aarch64/gcc-5.5.0/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+      #ROS
+      ROS_LANG_DISABLE: geneus:genlisp:gennodejs
+      ROS_PYTHON_VERSION: $ENV{ROS_PYTHON_VERSION}
+      CMAKE_PREFIX_PATH: "$SHELL{dirname `find ${SYSROOT}/opt/ros -name .catkin`}:\
+                          ${SYSROOT}/../resources/aarch64/ubuntu-16.04/mdc_platform_sdk
+                          "
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,\
+                ${SYSROOT}/usr/lib/aarch64-linux-gnu:\
+                ${SYSROOT}/lib/aarch64-linux-gnu:\
+                ${SYSROOT}/../resources/aarch64/ubuntu-16.04/mdc_platform_sdk/lib:\
+                ${HOLO_ROOT}/3rdparty/lib:\
+                ${HOLO_ROOT}/lib"
+      LD_LIBRARY_PATH: "${SYSROOT}/usr/lib/aarch64-linux-gnu:\
+                        ${SYSROOT}/lib/aarch64-linux-gnu:\
+                        ${SYSROOT}/../resources/aarch64/ubuntu-16.04/mdc_platform_sdk/lib:\
+                        ${HOLO_ROOT}/3rdparty/lib:\
+                        ${HOLO_ROOT}/lib"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/aarch64/ubuntu-16.04
+    machine: aarch64
+    system: linux
+    target_root: /opt/DataStore/targets/ubuntu-16.04-arm64
+    toolchain_prefix: aarch64-linux-gnu-
+
+  mdc300-mini_ubuntu-16.04:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/aarch64/gcc-5.5.0/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+      #ROS
+      ROS_LANG_DISABLE: geneus:genlisp:gennodejs
+      ROS_PYTHON_VERSION: $ENV{ROS_PYTHON_VERSION}
+      CMAKE_PREFIX_PATH: "$SHELL{dirname `find ${SYSROOT}/opt/ros -name .catkin`}:\
+                          ${SYSROOT}/../resources/aarch64/ubuntu-16.04/ddk:\
+                          ${SYSROOT}/../resources/aarch64/ubuntu-16.04/mdc_platform_sdk
+                          "
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,\
+                ${SYSROOT}/usr/lib/aarch64-linux-gnu:\
+                ${SYSROOT}/lib/aarch64-linux-gnu:\
+                ${SYSROOT}/../resources/aarch64/ubuntu-16.04/mdc_platform_sdk/lib:\
+                ${SYSROOT}/../resources/aarch64/ubuntu-16.04/ddk/device/lib:\
+                ${HOLO_ROOT}/3rdparty/lib:\
+                ${HOLO_ROOT}/lib"
+      LD_LIBRARY_PATH: "${SYSROOT}/usr/lib/aarch64-linux-gnu:\
+                        ${SYSROOT}/lib/aarch64-linux-gnu:\
+                        ${SYSROOT}/../resources/aarch64/ubuntu-16.04/mdc_platform_sdk/lib:\
+                        ${SYSROOT}/../resources/aarch64/ubuntu-16.04/ddk/device/lib:\
+                        ${HOLO_ROOT}/3rdparty/lib:\
+                        ${HOLO_ROOT}/lib"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/aarch64/ubuntu-16.04
+    machine: aarch64
+    system: linux
+    target_root: /opt/DataStore/targets/ubuntu-16.04-mdc300-mini
+    toolchain_prefix: aarch64-linux-gnu-
+
+  acu_ubuntu-16.04:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/aarch64/gcc-5.5.0/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+      #ROS
+      ROS_LANG_DISABLE: geneus:genlisp:gennodejs
+      ROS_PYTHON_VERSION: $ENV{ROS_PYTHON_VERSION}
+      CMAKE_PREFIX_PATH: "$SHELL{dirname `find ${SYSROOT}/opt/ros -name .catkin`}:\
+                          "
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,\
+                ${SYSROOT}/usr/lib/aarch64-linux-gnu:\
+                ${SYSROOT}/lib/aarch64-linux-gnu:\
+                ${HOLO_ROOT}/3rdparty/lib:\
+                ${HOLO_ROOT}/lib"
+      LD_LIBRARY_PATH: "${SYSROOT}/usr/lib/aarch64-linux-gnu:\
+                        ${SYSROOT}/lib/aarch64-linux-gnu:\
+                        ${HOLO_ROOT}/3rdparty/lib:\
+                        ${HOLO_ROOT}/lib"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/aarch64/ubuntu-16.04
+    machine: aarch64
+    system: linux
+    target_root: /opt/DataStore/targets/ubuntu-16.04-acu
+    toolchain_prefix: aarch64-linux-gnu-
+
+  aarch64_ubuntu-18.04:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/aarch64/gcc-7.5.0/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+      #ROS
+      ROS_LANG_DISABLE: geneus:genlisp:gennodejs
+      ROS_PYTHON_VERSION: $ENV{ROS_PYTHON_VERSION}
+      CMAKE_PREFIX_PATH: "$SHELL{dirname `find ${SYSROOT}/opt/ros -name .catkin`}:\
+                          ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/cuda:\
+                          ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/cudnn:\
+                          ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/tensorflow\
+                          "
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,\
+                ${SYSROOT}/usr/lib/aarch64-linux-gnu:\
+                ${SYSROOT}/lib/aarch64-linux-gnu:\
+                ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/cuda/lib64:\
+                ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/cudnn/lib/aarch64-linux-gnu:\
+                ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/tensorflow/bazel-bin/tensorflow:\
+                ${HOLO_ROOT}/3rdparty/lib:\
+                ${HOLO_ROOT}/lib"
+      LD_LIBRARY_PATH: "${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/cuda/lib64:\
+                        ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/cudnn/lib64:\
+                        ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/cudnn/lib/aarch64-linux-gnu:\
+                        ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/tensorflow/bazel-bin/tensorflow:\
+                        ${HOLO_ROOT}/3rdparty/lib:\
+                        ${HOLO_ROOT}/lib"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/aarch64/ubuntu-18.04
+      CUDA_TOOLKIT_ROOT: ${SYSROOT}/../resources/cuda
+    machine: aarch64
+    system: linux
+    target_root: /opt/DataStore/targets/ubuntu-18.04-arm64
+    toolchain_prefix: aarch64-linux-gnu-
+
+  aarch64_ubuntu-16.04-base:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/aarch64/gcc-5.5.0/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+      #ROS
+      ROS_LANG_DISABLE: geneus:genlisp:gennodejs
+      ROS_PYTHON_VERSION: $ENV{ROS_PYTHON_VERSION}
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,${SYSROOT}/usr/lib/aarch64-linux-gnu:${SYSROOT}/lib/aarch64-linux-gnu:${HOLO_ROOT}/3rdparty/lib:${HOLO_ROOT}/lib"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/aarch64/ubuntu-16.04
+    machine: aarch64
+    system: linux
+    target_root: /opt/DataStore/targets/ubuntu-base-16.04-arm64
+    toolchain_prefix: aarch64-linux-gnu-
+
+  aarch64_ubuntu-18.04-base:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/aarch64/gcc-7.5.0/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+      #ROS
+      ROS_LANG_DISABLE: geneus:genlisp:gennodejs
+      ROS_PYTHON_VERSION: $ENV{ROS_PYTHON_VERSION}
+      #CMAKE_PREFIX_PATH:
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,\
+                ${SYSROOT}/usr/lib/aarch64-linux-gnu:\
+                ${SYSROOT}/lib/aarch64-linux-gnu:\
+                ${HOLO_ROOT}/3rdparty/lib:\
+                ${HOLO_ROOT}/lib"
+      LD_LIBRARY_PATH: "${HOLO_ROOT}/3rdparty/lib:\
+                        ${HOLO_ROOT}/lib"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/aarch64/ubuntu-18.04
+    machine: aarch64
+    system: linux
+    target_root: /opt/DataStore/targets/ubuntu-base-18.04-arm64
+    toolchain_prefix: aarch64-linux-gnu-
+
+  tda4_ubuntu-18.04:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/aarch64/gcc-7.5.0/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+      #ROS
+      ROS_LANG_DISABLE: geneus:genlisp:gennodejs
+      ROS_PYTHON_VERSION: $ENV{ROS_PYTHON_VERSION}
+      CMAKE_PREFIX_PATH: "${SYSROOT}/../resources/package/multiarch/psdk;$SHELL{dirname `find ${SYSROOT}/opt/ros -name .catkin`}"
+      TI_PSDK_DIR: "${SYSROOT}/../resources/package/multiarch/psdk"
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,\
+                ${SYSROOT}/usr/lib/aarch64-linux-gnu:\
+                ${SYSROOT}/lib/aarch64-linux-gnu:\
+                ${HOLO_ROOT}/3rdparty/lib:\
+                ${HOLO_ROOT}/lib"
+      LD_LIBRARY_PATH: "${HOLO_ROOT}/3rdparty/lib:\
+                        ${HOLO_ROOT}/lib"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/aarch64/ubuntu-18.04
+    machine: aarch64
+    system: linux
+    target_root: /opt/DataStore/targets/ubuntu-18.04-tda4
+    toolchain_prefix: aarch64-linux-gnu-
+
+  armhf_ubuntu-16.04:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/armhf/gcc-5.5.0/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/arm-linux-gnueabihf/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/arm-linux-gnueabihf/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+      #ROS
+      ROS_LANG_DISABLE: geneus:genlisp:gennodejs
+      ROS_PYTHON_VERSION: $ENV{ROS_PYTHON_VERSION}
+      CMAKE_PREFIX_PATH: "$SHELL{dirname `find ${SYSROOT}/opt/ros -name .catkin`}"
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,${SYSROOT}/usr/lib/arm-linux-gnueabihf:${SYSROOT}/lib/arm-linux-gnueabihf:${HOLO_ROOT}/3rdparty/lib:${HOLO_ROOT}/lib"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/armhf/ubuntu-16.04
+    machine: armhf
+    system: linux
+    target_root: /opt/DataStore/targets/ubuntu-16.04-armhf
+    toolchain_prefix: arm-linux-gnueabihf-
+
+  armhf_ubuntu-18.04:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/armhf/gcc-7.4.1/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/arm-linux-gnueabihf/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/arm-linux-gnueabihf/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+      #ROS
+      ROS_LANG_DISABLE: geneus:genlisp:gennodejs
+      ROS_PYTHON_VERSION: $ENV{ROS_PYTHON_VERSION}
+      CMAKE_PREFIX_PATH: "$SHELL{dirname `find ${SYSROOT}/opt/ros -name .catkin`}"
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,${SYSROOT}/usr/lib/arm-linux-gnueabihf:${SYSROOT}/lib/arm-linux-gnueabihf:${HOLO_ROOT}/3rdparty/lib:${HOLO_ROOT}/lib"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/armhf/ubuntu-18.04
+    machine: armhf
+    system: linux
+    target_root: /opt/DataStore/targets/ubuntu-18.04-armhf
+    toolchain_prefix: arm-linux-gnueabihf-
+    
+  native:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${HOLO_ROOT}/../host/bin:${PATH}
+      #ROS
+      ROS_LANG_DISABLE: geneus:genlisp:gennodejs
+      ROS_PYTHON_VERSION: $ENV{ROS_PYTHON_VERSION}
+      CMAKE_PREFIX_PATH: "$SHELL{dirname `find ${SYSROOT}/opt/ros -name .catkin`}"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/$SHELL{uname -p}/$SHELL{lsb_release -i|cut -f2|tr '[:upper:]' '[:lower:]'}-$SHELL{lsb_release -r|cut -f2}
+    machine: null
+    system: null
+    target_root: null
+    toolchain_prefix: ""
+
+  x86_64_ubuntu-16.04:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/x86_64/gcc-5.4.0/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/x86_64-linux-gnu/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/x86_64-linux-gnu/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+      #ROS
+      ROS_LANG_DISABLE: geneus:genlisp:gennodejs
+      CMAKE_PREFIX_PATH: "$SHELL{dirname `find ${SYSROOT}/opt/ros -name .catkin`}"
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,${SYSROOT}/usr/lib/x86_64-linux-gnu:${SYSROOT}/lib/x86_64-linux-gnu:${HOLO_ROOT}/3rdparty/lib:${HOLO_ROOT}/lib"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/x86_64/ubuntu-16.04
+    machine: x86_64
+    system: linux
+    target_root: /opt/DataStore/targets/ubuntu-16.04-amd64
+    toolchain_prefix: x86_64-linux-gnu-
+    
+  x86_64_ubuntu-18.04:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: "${SYSROOT}/../resources/toolchain/x86_64/gcc-7.4.0/bin:\
+             ${HOLO_ROOT}/../host/bin:\
+             ${PATH}"
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/x86_64-linux-gnu/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/x86_64-linux-gnu/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+      #ROS
+      ROS_LANG_DISABLE: geneus:genlisp:gennodejs
+      ROS_PYTHON_VERSION: $ENV{ROS_PYTHON_VERSION}
+      CMAKE_PREFIX_PATH: "$SHELL{dirname `find ${SYSROOT}/opt/ros -name .catkin`}:\
+                          ${SYSROOT}/../resources/package/x86_64/ubuntu-18.04/cuda:\
+                          ${SYSROOT}/../resources/package/x86_64/ubuntu-18.04/cudnn:\
+                          ${SYSROOT}/../resources/package/x86_64/ubuntu-18.04/tensorrt:\
+                          ${SYSROOT}/../resources/package/x86_64/ubuntu-18.04/tensorflow:\
+                          ${SYSROOT}/../resources/package/multiarch/dds_micro\
+                          "
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,\
+                ${SYSROOT}/usr/lib/x86_64-linux-gnu:\
+                ${SYSROOT}/lib/x86_64-linux-gnu:\
+                ${SYSROOT}/../resources/package/x86_64/ubuntu-18.04/cuda/lib64:\
+                ${SYSROOT}/../resources/package/x86_64/ubuntu-18.04/cudnn/lib64:\
+                ${SYSROOT}/../resources/package/x86_64/ubuntu-18.04/tensorrt/lib:\
+                ${SYSROOT}/../resources/package/x86_64/ubuntu-18.04/tensorflow/bazel-bin/tensorflow:\
+                ${HOLO_ROOT}/3rdparty/lib:\
+                ${HOLO_ROOT}/lib"
+      LD_LIBRARY_PATH: "${SYSROOT}/../resources/package/x86_64/ubuntu-18.04/cuda/lib64:\
+                        ${SYSROOT}/../resources/package/x86_64/ubuntu-18.04/cudnn/lib64:\
+                        ${SYSROOT}/../resources/package/x86_64/ubuntu-18.04/tensorrt/lib:\
+                        ${SYSROOT}/../resources/package/x86_64/ubuntu-18.04/tensorflow/bazel-bin/tensorflow:\
+                        ${HOLO_ROOT}/3rdparty/lib:\
+                        ${HOLO_ROOT}/lib"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/x86_64/ubuntu-18.04
+      CUDA_TOOLKIT_ROOT: ${SYSROOT}/../resources/cuda
+    machine: x86_64
+    system: linux
+    target_root: /opt/DataStore/targets/ubuntu-18.04-amd64
+    toolchain_prefix: x86_64-linux-gnu-
+
+  x86_64_ubuntu-18.04-base:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/x86_64/gcc-7.4.0/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/x86_64-linux-gnu/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/x86_64-linux-gnu/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+      #ROS
+      ROS_LANG_DISABLE: geneus:genlisp:gennodejs
+      ROS_PYTHON_VERSION: $ENV{ROS_PYTHON_VERSION}
+      CMAKE_PREFIX_PATH: ""
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,\
+                ${SYSROOT}/usr/lib/x86_64-linux-gnu:\
+                ${SYSROOT}/lib/x86_64-linux-gnu:\
+                ${HOLO_ROOT}/3rdparty/lib:\
+                ${HOLO_ROOT}/lib"
+      LD_LIBRARY_PATH: "${HOLO_ROOT}/3rdparty/lib:\
+                        ${HOLO_ROOT}/lib"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/x86_64/ubuntu-18.04
+    machine: x86_64
+    system: linux
+    target_root: /opt/DataStore/targets/ubuntu-base-18.04-amd64
+    toolchain_prefix: x86_64-linux-gnu-
+
+  xavier_ubuntu-18.04:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/cuda/bin:${SYSROOT}/../resources/toolchain/aarch64/gcc-7.5.0/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+      #ROS
+      ROS_LANG_DISABLE: geneus:genlisp:gennodejs
+      ROS_PYTHON_VERSION: $ENV{ROS_PYTHON_VERSION}
+      CMAKE_PREFIX_PATH: "$SHELL{dirname `find ${SYSROOT}/opt/ros -name .catkin`}:\
+                          ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/cuda:\
+                          ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/cudnn:\
+                          ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/tensorrt:\
+                          ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/tensorflow\
+                          "
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,\
+                ${SYSROOT}/usr/lib/aarch64-linux-gnu:\
+                ${SYSROOT}/lib/aarch64-linux-gnu:\
+                ${SYSROOT}/usr/lib/aarch64-linux-gnu/tegra:\
+                ${SYSROOT}/usr/lib/aarch64-linux-gnu/tegra-egl:\
+                ${SYSROOT}/../resources/cuda/lib64:\
+                ${SYSROOT}/../resources/cudnn/lib/aarch64-linux-gnu:\
+                ${SYSROOT}/../resources/tensorrt/lib:\
+                ${SYSROOT}/../resources/tensorflow/bazel-bin/tensorflow:\
+                ${HOLO_ROOT}/3rdparty/lib:\
+                ${HOLO_ROOT}/lib"
+      LD_LIBRARY_PATH: "${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/cuda/lib64:\
+                        ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/cudnn/lib/aarch64-linux-gnu:\
+                        ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/tensorrt/lib:\
+                        ${SYSROOT}/../resources/package/aarch64/ubuntu-18.04/tensorflow/bazel-bin/tensorflow:\
+                        ${HOLO_ROOT}/3rdparty/lib:\
+                        ${HOLO_ROOT}/lib"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/aarch64/ubuntu-18.04
+      CUDA_TOOLKIT_ROOT: ${SYSROOT}/../resources/cuda
+    machine: aarch64
+    system: linux
+    target_root: /opt/DataStore/targets/ubuntu-18.04-xavier
+    toolchain_prefix: aarch64-linux-gnu-
+
+  aarch64_linux-dura-renesas-h3:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/aarch64/gcc-7.5.0/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-poky-linux/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-poky-linux/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,${SYSROOT}/usr/lib/aarch64-poky-linux:${SYSROOT}/lib/aarch64-poky-linux:${HOLO_ROOT}/3rdparty/lib:${HOLO_ROOT}/lib"
+    machine: aarch64
+    system: linux
+    target_root: /opt/DataStore/targets/dura-yocto
+    toolchain_prefix: aarch64-linux-gnu-
+
+  aarch64_linux-c52:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/aarch64/gcc-7.5.0/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-poky-linux/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig:${SYSROOT}/usr/lib/aarch64-poky-linux/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python2.7/dist-packages:${PYTHONPATH}
+
+      CMAKE_PREFIX_PATH: "${SYSROOT}/../resources/package/aarch64/baicc52x_sdk"
+
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,\
+                ${SYSROOT}/usr/lib/aarch64-poky-linux:\
+                ${SYSROOT}/lib/aarch64-poky-linux:\
+                ${SYSROOT}/../resources/package/aarch64/baicc52x_sdk/lib:\
+                ${HOLO_ROOT}/3rdparty/lib:\
+                ${HOLO_ROOT}/lib"
+      LD_LIBRARY_PATH: "${SYSROOT}/usr/lib/aarch64-poky-linux:\
+                        ${SYSROOT}/lib/aarch64-poky-linux:\
+                        ${SYSROOT}/../resources/package/aarch64/baicc52x_sdk/lib:\
+                        ${HOLO_ROOT}/3rdparty/lib:\
+                        ${HOLO_ROOT}/lib"
+    machine: aarch64
+    system: linux
+    target_root: /opt/DataStore/targets/c52-yocto
+    toolchain_prefix: aarch64-linux-gnu-
+
+  x86_64_qnx-7.0.0:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/multiarch/qnx700/host/linux/x86_64/usr/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      QNX_HOST: ${SYSROOT}/../resources/toolchain/multiarch/qnx700/host/linux/x86_64
+      QNX_TARGET: ${SYSROOT}/../resources/toolchain/multiarch/qnx700/target/qnx7
+      MAKEFLAGS: "-I${SYSROOT}/../resources/toolchain/multiarch/qnx700/target/qnx7/usr/include"
+      #toolchain
+      CC: "qcc -Vgcc_ntox86_64"
+      CXX: "q++ -Vgcc_ntox86_64_cxx" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      CFLAGS: "-D_QNX_SOURCE"
+      CXXFLAGS: "-D_QNX_SOURCE"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/x86_64/qnx-7.0.0
+    machine: x86_64
+    system: qnx
+    target_root: /opt/DataStore/targets/qnx-7.0.0-amd64
+    toolchain_prefix: ntox86_64-
+    
+  aarch64_qnx-7.0.0:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/multiarch/qnx700/host/linux/x86_64/usr/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      QNX_HOST: ${SYSROOT}/../resources/toolchain/multiarch/qnx700/host/linux/x86_64
+      QNX_TARGET: ${SYSROOT}/../resources/toolchain/multiarch/qnx700/target/qnx7
+      MAKEFLAGS: "-I${SYSROOT}/../resources/toolchain/multiarch/qnx700/target/qnx7/usr/include"
+      #toolchain
+      CC: "qcc -Vgcc_ntoaarch64le"
+      CXX: "q++ -Vgcc_ntoaarch64le_cxx" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      CFLAGS: "-D_QNX_SOURCE"
+      CXXFLAGS: "-D_QNX_SOURCE"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/aarch64/qnx-7.0.0
+    machine: aarch64
+    system: qnx
+    target_root: /opt/DataStore/targets/qnx-7.0.0-arm64
+    toolchain_prefix: ntoaarch64-
+
+  tda4_qnx-7.0.0:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../resources/toolchain/multiarch/qnx700/host/linux/x86_64/usr/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      CMAKE_PREFIX_PATH: "${SYSROOT}/../resources/package/multiarch/psdk;${SYSROOT}/../resources/package/multiarch/dds_micro"
+      TI_PSDK_ROOT: "${SYSROOT}/../resources/package/multiarch/psdk"
+      QNX_HOST: ${SYSROOT}/../resources/toolchain/multiarch/qnx700/host/linux/x86_64
+      QNX_TARGET: ${SYSROOT}/../resources/toolchain/multiarch/qnx700/target/qnx7
+      MAKEFLAGS: "-I${SYSROOT}/../resources/toolchain/multiarch/qnx700/target/qnx7/usr/include"
+      #toolchain
+      CC: "qcc -Vgcc_ntoaarch64le"
+      CXX: "q++ -Vgcc_ntoaarch64le_cxx" 
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      CFLAGS: "-D_QNX_SOURCE"
+      CXXFLAGS: "-D_QNX_SOURCE"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/aarch64/qnx-7.0.0
+    machine: aarch64
+    system: qnx
+    target_root: /opt/DataStore/targets/qnx-7.0.0-tda4
+    toolchain_prefix: ntoaarch64-
+
+  MDC610-1.0.007-A.B012:
+    init_env:
+      PATH: /usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin
+      LANG: $ENV{LANG}
+      TERM: $ENV{TERM}
+      PWD: $ENV{PWD}
+      SHELL: $ENV{SHELL}
+      USER: $ENV{USER}
+      HOME: $ENV{HOME}
+    env:
+      PATH: ${SYSROOT}/../toolchain/bin:${HOLO_ROOT}/../host/bin:${PATH}
+      # pkgconfig
+      PKG_CONFIG_PATH: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig
+      PKG_CONFIG_LIBDIR: ${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: ${SYSROOT}
+      #PYTHON
+      PYTHONPATH: ${SYSROOT}/usr/lib/python3.7/dist-packages:${PYTHONPATH}
+
+      # MDC610 libs
+      DDK_PATH: ${SYSROOT}/usr/local/Ascend
+      NPU_HOST_LIB: ${SYSROOT}/usr/local/Ascend/acllib/lib64/stub
+      AscendCL_ROOT: ${SYSROOT}/usr/local/Ascend/acllib
+
+      #toolchain
+      CC: "${TOOLCHAIN_PREFIX}gcc --sysroot=${SYSROOT}"
+      CXX: "${TOOLCHAIN_PREFIX}g++ --sysroot=${SYSROOT}"
+      RANLIB: ${TOOLCHAIN_PREFIX}ranlib
+      AR: ${TOOLCHAIN_PREFIX}ar
+      LD: ${TOOLCHAIN_PREFIX}ld
+      NM: ${TOOLCHAIN_PREFIX}nm
+      OBJDUMP: ${TOOLCHAIN_PREFIX}objdump
+      STRIP: ${TOOLCHAIN_PREFIX}strip
+      LDFLAGS: "-Wl,-rpath-link,\
+                ${HOLO_ROOT}/3rdparty/lib:\
+                ${HOLO_ROOT}/lib"
+      LD_LIBRARY_PATH: "${HOLO_ROOT}/3rdparty/lib:\
+                        ${HOLO_ROOT}/lib"
+      HOLO_3RDPARTY_CACHE_ROOT: /opt/DataStore/libs/aarch64/ubuntu-18.04
+    machine: aarch64
+    system: linux
+    target_root: /opt/DataStore/targets/MDC610-1.0.007-A.B012
+    toolchain_prefix: aarch64-target-linux-gnu-
+
+build_type:
+  coverage:
+    env: 
+      GTEST_OUTPUT: "json:"
+    cfg_args: [-DCMAKE_EXPORT_NO_PACKAGE_REGISTRY=ON,
+               -DCMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=ON,
+               -DCMAKE_BUILD_TYPE=DEBUG,
+               -DHOLO_BUILD_TEST=ON,
+               -DHOLO_CPU_PROFILE=OFF,
+               -DCMAKE_EXPORT_COMPILE_COMMANDS=ON,
+               -DHOLO_BUILD_COVERAGE=ON
+               ]
+  debug:
+    env:
+      GTEST_OUTPUT: "json:"
+    cfg_args: [-DCMAKE_EXPORT_NO_PACKAGE_REGISTRY=ON,
+               -DCMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=ON,
+               -DCMAKE_BUILD_TYPE=DEBUG,
+               -DHOLO_BUILD_TEST=OFF,
+               -DHOLO_CPU_PROFILE=OFF,
+               -DCMAKE_EXPORT_COMPILE_COMMANDS=ON,
+               ]
+  release:
+    env:
+      GTEST_OUTPUT: "json:"
+    cfg_args: [-DCMAKE_EXPORT_NO_PACKAGE_REGISTRY=ON,
+               -DCMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=ON,
+               -DCMAKE_BUILD_TYPE=RELEASE,
+               -DHOLO_BUILD_TEST=OFF,
+               -DHOLO_CPU_PROFILE=OFF,
+               -DCMAKE_EXPORT_COMPILE_COMMANDS=ON,
+               ]
+  relwithdebinfo:
+    env:
+      GTEST_OUTPUT: "json:"
+    cfg_args: [-DCMAKE_EXPORT_NO_PACKAGE_REGISTRY=ON,
+               -DCMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=ON,
+               -DCMAKE_BUILD_TYPE=RELWITHDEBINFO,
+               -DHOLO_BUILD_TEST=OFF,
+               -DHOLO_CPU_PROFILE=OFF,
+               -DCMAKE_EXPORT_COMPILE_COMMANDS=ON,
+               ]
+

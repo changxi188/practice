@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 2.9)
+find_package(Boost COMPONENTS program_options REQUIRED)
+include_directories(${Boost_INCLUDE_DIR})
+add_executable(first first.cpp)
+target_link_libraries(first ${Boost_LIBRARIES})
+add_executable(second second.cpp)
+target_link_libraries(second ${Boost_LIBRARIES})

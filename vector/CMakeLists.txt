@@ -1,0 +1,8 @@
+add_executable(pointer_test  src/pointer_test.cpp)
+add_executable(sort_test src/sort_test.cpp)
+add_executable(rotation src/rotation.cpp)
+add_executable(setZeros src/setZeros.cpp)
+add_executable(div src/div.cpp)
+add_executable(break src/break.cpp)
+add_executable(1 1.cpp)
+add_executable(2 2.cpp)

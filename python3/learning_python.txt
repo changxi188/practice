@@ -1,0 +1,4 @@
+In python you can use list
+In python you can use dict
+In python you can def func
+In python you can def class
