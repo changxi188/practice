@@ -2,8 +2,11 @@
 // Created by hyj on 17-6-22.
 //
 
-#include <fstream>
 #include <sys/stat.h>
+#include <fstream>
+
+#include <pangolin/pangolin.h>
+
 #include "../src/imu.h"
 #include "../src/utilities.h"
 
@@ -36,7 +39,8 @@ void CreatePointsLines(Points& points, Lines& lines)
             Eigen::Vector4d pt1( x, y, z, 1 );
 
             bool isHistoryPoint = false;
-            for (int i = 0; i < points.size(); ++i) {
+            for (int i = 0; i < points.size(); ++i)
+            {
                 Eigen::Vector4d pt = points[i];
                 if(pt == pt0)
                 {
@@ -47,7 +51,8 @@ void CreatePointsLines(Points& points, Lines& lines)
                 points.push_back(pt0);
 
             isHistoryPoint = false;
-            for (int i = 0; i < points.size(); ++i) {
+            for (int i = 0; i < points.size(); ++i)
+            {
                 Eigen::Vector4d pt = points[i];
                 if(pt == pt1)
                 {
@@ -65,7 +70,8 @@ void CreatePointsLines(Points& points, Lines& lines)
 
     // create more 3d points, you can comment this code
     int n = points.size();
-    for (int j = 0; j < n; ++j) {
+    for (int j = 0; j < n; ++j)
+    {
         Eigen::Vector4d p = points[j] + Eigen::Vector4d(0.5,0.5,-0.5,0);
         points.push_back(p);
     }
@@ -129,8 +135,8 @@ int main(){
 
     // cam pose
     std::vector< MotionData > camdata;
-    for (float t = params.t_start; t<params.t_end;) {
-
+    for (float t = params.t_start; t < params.t_end;)
+    {
         MotionData imu = imuGen.MotionModel(t);   // imu body frame to world frame motion
         MotionData cam;
 
@@ -155,7 +161,8 @@ int main(){
         // 遍历所有的特征点，看哪些特征点在视野里
         std::vector<Eigen::Vector4d, Eigen::aligned_allocator<Eigen::Vector4d> > points_cam;    // ３维点在当前cam视野里
         std::vector<Eigen::Vector2d, Eigen::aligned_allocator<Eigen::Vector2d> > features_cam;  // 对应的２维图像坐标
-        for (int i = 0; i < points.size(); ++i) {
+        for (int i = 0; i < points.size(); ++i)
+        {
             Eigen::Vector4d pw = points[i];          // 最后一位存着feature id
             pw[3] = 1;                               //改成齐次坐标最后一位
             Eigen::Vector4d pc1 = Twc.inverse() * pw; // T_wc.inverse() * Pw  -- > point in cam frame
@@ -188,7 +195,8 @@ int main(){
         // 遍历所有的特征点，看哪些特征点在视野里
         // std::vector<Eigen::Vector4d, Eigen::aligned_allocator<Eigen::Vector4d> > points_cam;    // ３维点在当前cam视野里
         std::vector<Eigen::Vector4d, Eigen::aligned_allocator<Eigen::Vector4d> > features_cam;  // 对应的２维图像坐标
-        for (int i = 0; i < lines.size(); ++i) {
+        for (int i = 0; i < lines.size(); ++i)
+        {
             Line linept = lines[i];
 
             Eigen::Vector4d pc1 = Twc.inverse() * linept.first; // T_wc.inverse() * Pw  -- > point in cam frame
